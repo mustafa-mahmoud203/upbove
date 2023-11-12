@@ -6,7 +6,7 @@ const router = Router();
 router.get("/", auth, userController.userData);
 router.get(
   "/:id/profile",
-  // validation(validators.shareProfile),
+  validation(validators.shareProfile),
   userController.shareProfile
 );
 
