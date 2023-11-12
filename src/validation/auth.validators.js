@@ -2,11 +2,11 @@ import joi from "joi";
 import { validationFields } from "../middleware/validation.js";
 export const signUp = {
   body: joi.object({
-    firstName: validationFields.firstName,
-    lastName: validationFields.lastName,
-    email: validationFields.email,
-    age: validationFields.age,
-    gender: validationFields.gender,
+    firstName: validationFields.firstName.required(),
+    lastName: validationFields.lastName.required(),
+    email: validationFields.email.required(),
+    age: validationFields.age.required(),
+    gender: validationFields.gender.required(),
 
     password: validationFields.password,
     confirmPassword: validationFields.confirmPassword.valid(

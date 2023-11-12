@@ -1,8 +1,8 @@
 import bcrypt from "bcryptjs";
-export const hahs = (password) => {
+export const hash = (password) => {
   return bcrypt.hashSync(password, parseInt(process.env.SULT_ROUND));
 };
 
-export const compare = ({ loginpassword = "", hashPassword = "" } = {}) => {
-  return bcrypt.compareSync(loginpassword, hashPassword);
+export const compare = ({ password = "", hashPassword = "" } = {}) => {
+  return bcrypt.compareSync(password, hashPassword);
 };

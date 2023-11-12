@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import userModel from "../../database/models/user.model.js";
 import { asyncHandler } from "../utils/errorHandling.js";
-import { compare, hahs } from "../utils/hashAndCompare.js";
+import { compare, hash } from "../utils/hashAndCompare.js";
 
 import { signToken } from "../utils/token.js";
 
@@ -11,13 +11,13 @@ export const signUp = asyncHandler(async (req, res, next) => {
   const cheackUser = await userModel.findOne({ email });
   if (cheackUser) return next(new Error("email exist", { cause: 400 }));
 
-  const hahsPassword = hahs(password);
+  const hashPassword = hash(password);
 
   const user = await userModel.create({
     firstName,
     lastName,
     email,
-    password: hahsPassword,
+    password: hashPassword,
     age,
     gender,
   });

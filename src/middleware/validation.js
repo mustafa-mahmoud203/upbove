@@ -7,13 +7,12 @@ const customValidID = (value, helper) => {
   return Types.ObjectId.isValid(value) ? true : helper.message("in-valid ID");
 };
 export const validationFields = {
-  firstName: joi.string().min(3).max(15).alphanum().required(),
-  lastName: joi.string().min(3).max(15).alphanum().required(),
+  firstName: joi.string().min(3).max(15).alphanum(),
+  lastName: joi.string().min(3).max(15).alphanum(),
   id: joi.string().custom(customValidID).required(),
   email: joi
     .string()
-    .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
-    .required(),
+    .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } }),
   password: joi
     .string()
     .pattern(new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/))
@@ -23,8 +22,8 @@ export const validationFields = {
     .string()
     .pattern(new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/))
     .required(),
-  age: joi.number().integer().min(15).max(100).required(),
-  gender: joi.string().valid("male", "MALE", "female", "FEMALE").required(),
+  age: joi.number().integer().min(15).max(100),
+  gender: joi.string().valid("male", "MALE", "female", "FEMALE"),
 };
 export const validation = (schema) => {
   return (req, res, next) => {
