@@ -1,6 +1,6 @@
 import joi from "joi";
 import { validationFields } from "../middleware/validation.js";
-export const signUpVald = {
+export const signUp = {
   body: joi.object({
     firstName: validationFields.firstName,
     lastName: validationFields.lastName,
