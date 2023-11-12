@@ -14,3 +14,9 @@ export const signUp = {
     ),
   }),
 };
+export const login = {
+  body: joi.object({
+    email: validationFields.email,
+    password: validationFields.password,
+  }),
+};
