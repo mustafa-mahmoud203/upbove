@@ -1,7 +1,8 @@
 import userModel from "../../database/models/user.model.js";
 import { verifyToken } from "../utils/token.js";
+import { asyncHandler } from "../utils/errorHandling.js";
 
-const auth = async (req, res, next) => {
+const auth = asyncHandler(async (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization.startWith(process.env.BERAR_KEY))
@@ -21,6 +22,6 @@ const auth = async (req, res, next) => {
 
   req.user = user;
   return next();
-};
+});
 
 export default auth;
