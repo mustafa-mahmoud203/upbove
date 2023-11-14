@@ -28,7 +28,7 @@ const userSchema = new Schema(
       required: true,
       enum: ["male", "female", "MALE", "FEMALE"],
     },
-    profilePic: String,
+    profilePic: Object,
   },
   { timestamps: true }
 );

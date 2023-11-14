@@ -4,6 +4,7 @@ import * as userController from "../controller/user.js";
 
 import { validation } from "../middleware/validation.js";
 import * as validators from "../validation/user.validation.js";
+import { fileUpload, filesValidation } from "../utils/multer.js";
 
 const router = Router();
 
@@ -25,6 +26,14 @@ router.patch(
   validation(validators.userPassword),
   auth,
   userController.updatePassword
+);
+
+router.patch(
+  "/profilePic",
+  fileUpload(filesValidation.image).single("image"),
+  // validation(validators.userPassword),
+  // auth,
+  userController.profilePic
 );
 
 export default router;

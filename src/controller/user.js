@@ -40,3 +40,9 @@ export const updatePassword = asyncHandler(async (req, res, next) => {
   });
   return res.status(200).json({ message: "Done", user });
 });
+export const profilePic = asyncHandler(async (req, res, next) => {
+  const cloud = await cloudinary.uploader.upload(req.file.path, {
+    folder: `user/${req.user._id}/profile`,
+  });
+  return res.json({ cloud });
+});
