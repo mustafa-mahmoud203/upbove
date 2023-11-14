@@ -32,7 +32,7 @@ router.patch(
   "/profilePic",
   fileUpload(filesValidation.image).single("image"),
   // validation(validators.userPassword),
-  auth,
+  // auth,
   userController.profilePic
 );
 
