@@ -16,3 +16,13 @@ export const userData = {
     gender: validationFields.gender,
   }),
 };
+
+export const userPassword = {
+  body: joi.object({
+    oldPassword: validationFields.password,
+    newPassword: validationFields.newPassword.invalid(joi.ref("oldPassword")),
+    confirmPassword: validationFields.confirmPassword.valid(
+      joi.ref("newPassword")
+    ),
+  }),
+};

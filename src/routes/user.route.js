@@ -22,7 +22,7 @@ router.put(
 );
 router.patch(
   "/",
-  // validation(validators.userPassword),
+  validation(validators.userPassword),
   auth,
   userController.updatePassword
 );

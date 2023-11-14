@@ -24,6 +24,17 @@ export const validationFields = {
     .required(),
   age: joi.number().integer().min(15).max(100),
   gender: joi.string().valid("male", "MALE", "female", "FEMALE"),
+  file: joi.object({
+    size: joi.number().positive().required(),
+    path: joi.string().required(),
+    filename: joi.string().required(),
+    destination: joi.string().required(),
+    mimetype: joi.string().required(),
+    encoding: joi.string().required(),
+    originalname: joi.string().required(),
+    fieldname: joi.string().required(),
+    dest: joi.string(),
+  }),
 };
 export const validation = (schema) => {
   return (req, res, next) => {

@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
   return await mongoose
-    .connect(`mongodb://127.0.0.1:27017/upbove`)
+    .connect(process.env.CONNECTION_PATH)
     .then(() => {
       console.log("Data base connected");
     })
